@@ -36,6 +36,7 @@
         </activity>
 
         <activity android:name=".activity.RouterActivity"/>
+        <activity android:name=".activity.BillActivity"/>
 
 
         <!-- Required SDK核心功能-->

@@ -12,6 +12,7 @@ import android.support.v4.app.RemoteInput;
 import android.text.TextUtils;
 
 import net.gongmingqm10.cmcc.R;
+import net.gongmingqm10.cmcc.activity.BillActivity;
 import net.gongmingqm10.cmcc.activity.MainActivity;
 import net.gongmingqm10.cmcc.activity.RouterActivity;
 import net.gongmingqm10.cmcc.utils.Constant;
@@ -30,11 +31,11 @@ public class JPushReceiver extends BroadcastReceiver {
 
     private void startNotification(String message, Context context) {
         int notificationID = 100;
-        Intent notificationIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://10086.cn/sn/"));
+//        Intent notificationIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://10086.cn/sn/"));
+        Intent notificationIntent = new Intent(context, BillActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-//        Intent actionIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=中国移动"));
-        Intent actionIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q=中国移动"));
+        Intent actionIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q=西安移动营业厅"));
         PendingIntent actionPendingIntent = PendingIntent.getActivity(context, 0, actionIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
 
