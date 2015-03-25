@@ -8,14 +8,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.app.RemoteInput;
-import android.text.TextUtils;
 
 import net.gongmingqm10.cmcc.R;
 import net.gongmingqm10.cmcc.activity.BillActivity;
-import net.gongmingqm10.cmcc.activity.MainActivity;
-import net.gongmingqm10.cmcc.activity.RouterActivity;
-import net.gongmingqm10.cmcc.utils.Constant;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -23,6 +18,7 @@ public class JPushReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Bundle bundle = intent.getExtras();
+        // 只处理JPush的自定义消息，Jpush通知和自定义消息是不一样的
         if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
             String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);
             startNotification(message, context);
@@ -31,7 +27,6 @@ public class JPushReceiver extends BroadcastReceiver {
 
     private void startNotification(String message, Context context) {
         int notificationID = 100;
-//        Intent notificationIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://10086.cn/sn/"));
         Intent notificationIntent = new Intent(context, BillActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
